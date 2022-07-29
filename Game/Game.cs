@@ -4,18 +4,26 @@ namespace WordGame;
 
 public class Game
 {
+  private WordChooser _chooser = new WordChooser();
   private string _hiddenWord;
   private int _attempts = 10;
-  private readonly string[] DICTIONARY = {"MAKERS", "CANDIES", "DEVELOPER", "LONDON"};
 
   public Game()
   {
-    this._hiddenWord = GetRandomWordFromDictionary();
+    this._hiddenWord = this._chooser.GetRandomWordFromDictionary();
   }
+
   public Game(string givenWord)
   {
     this._hiddenWord = givenWord;
   }
+
+  public Game(WordChooser chooser)
+  {
+    this._chooser = chooser;
+    this._hiddenWord = _chooser.GetRandomWordFromDictionary();
+  }
+
   public string GetWordToGuess()
   {
     StringBuilder builder = new StringBuilder();
@@ -39,9 +47,4 @@ public class Game
     return this._attempts;
   }
 
-  private string GetRandomWordFromDictionary()
-  {
-    Random rnd = new Random();
-    return DICTIONARY[rnd.Next(DICTIONARY.Length)];
-  }
 }
