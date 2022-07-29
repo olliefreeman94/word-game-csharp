@@ -31,7 +31,7 @@ public class Game
     for (int i = 0; i < this._hiddenWord.Length; i++)
     {
       char currentLetter = this._hiddenWord[i];
-      if (i == 0)
+      if (i == 0 || this._guessedLetters.Contains(currentLetter))
       {
         builder.Append(currentLetter);
       }

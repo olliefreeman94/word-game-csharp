@@ -12,6 +12,14 @@ public class GameTests
     [Test]
     public void Game_GetWordToGuess_ReturnsWordToGuess()
     {
+      Game game = new Game("DEVELOPER");
+      game.GuessLetter('E');
+      Assert.That(game.GetWordToGuess(), Is.EqualTo("DE_E___E_"));
+    }
+
+    [Test]
+    public void Game_GetWordToGuess_ReturnsUpdatedWordToGuess()
+    {
       Game game = new Game("MAKERS");
       Assert.That(game.GetWordToGuess(), Is.EqualTo("M_____"));
     }
