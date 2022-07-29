@@ -32,4 +32,22 @@ public class GameTests
       Game game = new Game("MAKERS");
       Assert.That(game.GetRemainingAttempts(), Is.EqualTo(10));
     }
+
+    [Test]
+    public void Game_GuessLetter_ReturnsTrueForMatchingLetter()
+    {
+      Game game = new Game("MAKERS");
+      bool result = game.GuessLetter('M');
+      Assert.That(result, Is.EqualTo(true));
+      Assert.That(game.GetRemainingAttempts(), Is.EqualTo(10));
+    }
+
+    [Test]
+    public void Game_GuessLetter_ReturnsFalseForNonMatchingLetter()
+    {
+      Game game = new Game("MAKERS");
+      bool result = game.GuessLetter('Z');
+      Assert.That(result, Is.EqualTo(false));
+      Assert.That(game.GetRemainingAttempts(), Is.EqualTo(9));
+    }
 }

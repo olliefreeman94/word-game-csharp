@@ -7,6 +7,7 @@ public class Game
   private WordChooser _chooser = new WordChooser();
   private string _hiddenWord;
   private int _attempts = 10;
+  private List<char> _guessedLetters = new List<char>();
 
   public Game()
   {
@@ -47,4 +48,17 @@ public class Game
     return this._attempts;
   }
 
+  public bool GuessLetter(char letter)
+  {
+    if(this._hiddenWord.Contains(letter))
+    {
+      _guessedLetters.Add(letter);
+      return true;
+    }
+    else
+    {
+      this._attempts -= 1;
+      return false;
+    }
+  }
 }
